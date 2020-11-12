@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+</head>
+<body>
+    <ul>
+        {% for i in pagedata.object_list%}
+            <h2><a href="/article?id={{ i.id }}">{{ i.title }}</a></h2>
+            <p>{{ i.description | safe }}</p>
+            <span>作者：{{ i.author }}发表日期：{{ i.ctime }}</span>
+        {% endfor %}
+    </ul>
+        {% if pagedata.has_previous %}
+            <a href="/index?p={{ pagedata.previous_page_number }}">上一页</a>
+        {% else %}
+            <a href="#">上一页</a>
+        {% endif %}
+        {% for num in paging.page_range %}
+            <a href="/index?p={{ num }}">{{ num }}</a>
+        {% endfor %}
+
+        {% if pagedata.has_next %}
+            <a href="/index?p={{ pagedata.next_page_number }}">下一页</a>
+        {% else %}
+            <a href="#">下一页</a>
+        {% endif %}
+        <span>
+            <a>当前页：{{ pagedata.number }}/总页数:{{ paging.num_pages }}</a>
+        </span>
+        <br><a>总文章数:{{ paging.count }}篇</a>
+</body>
+</html>

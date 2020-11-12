@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {{ req }}
+    <hr>
+    {{ request }}
+    <hr>
+    <h2>是用来存储请示的cookie的，通常我们在编写网站的时候进行cookie的校验</h2>
+    {{ request.COOKIES }}
+    <hr>
+    <h2>是用来接收客户端提交的文件的数据的，比如上传的图片和文件</h2>
+    {{ request.FILES }}
+    <hr>用来接收客户端的GET数据</h2>
+    {{ request.GET }}
+    <hr>
+    <hr>用来接收客户端的POST数据</h2>
+    {{ request.POST }}
+    <hr>
+    <h2>用来接收存储跳转的容器</h2>
+    {{ request.REQUEST }}
+    <hr>
+    {{ request.META }}
+    <hr>
+    <table border="1px",width="1px">
+        {% for keys,values in request.META.items %}
+        <tr>
+            <td>{{ keys }}</td>
+            <td>{{ values }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
